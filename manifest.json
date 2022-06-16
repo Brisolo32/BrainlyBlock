@@ -3,9 +3,6 @@
     "description": "Bloqueia o PayWall do Brainly",
     "version": "1.0",
     "manifest_version": 2,
-    "background": {
-        "service_worker": "background.js"
-    },
     "icons": {
         "16": "icons/icon-16.png",
         "48": "icons/icon-48.png",
@@ -14,9 +11,12 @@
     "permissions": [
         "tabs",
         "notifications",
-        "activeTab",
-        "scripting",
-        "http://*/",
-        "https://*/"
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["http://*.brainly.com.br/*"],
+            "js": ["background.js"]
+        }
     ]
 }
